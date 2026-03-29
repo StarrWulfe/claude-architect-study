@@ -1,0 +1,24 @@
+# Machine-specific configs (do not commit)
+settings.json
+
+# Local Claude Code files (keep only the reusable skill)
+.claude/*
+!.claude/skills/
+
+# Personal/Private items (not for sharing)
+certificates/
+claude cert notes/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.vscode/
+.idea/
+
+# Secrets / env files
+.env
+.env.local
+*.key
+*.pem
