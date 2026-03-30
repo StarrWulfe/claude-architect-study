@@ -40,3 +40,16 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
   - Covered all 8 decision rules with examples, tradeoffs, and anti-patterns
   - Key distinction: CLAUDE.md (model sees it) vs settings.json hooks (application executes them)
   - Next: Practice scenario questions to reinforce decision-making
+
+### 2026-03-30 (5 min)
+- **Time Started:** ~14:30
+- **Time Ended:** ~14:35
+- **Elapsed Time:** 5 minutes
+- **Areas Studied:** Agentic Architecture flashcards (10 cards)
+- **Strong Points:** Good recall of core concepts: coordinator responsibilities, subagent specialization, context management
+- **Weak Points:** Could use more practice on when to use prompt chaining vs dynamic decomposition, failure handling patterns
+- **Notes:**
+  - Completed 10 flashcard Q&A on Agentic Architecture focusing on production patterns and anti-patterns
+  - Key concepts reinforced: specialization, context blowup avoidance, orchestrator integration role
+  - Note: `/study` skill command not functioning in current CLI environment - provided materials directly
+  - Next: Practice scenario questions on Agentic Architecture or move to Tool Design/MCP domain
