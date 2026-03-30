@@ -15,6 +15,19 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
 
 ## Study Session Log
 
+### 2026-03-29 (65 min total)
+- **Time Started:** 21:45
+- **Time Ended:** 21:50
+- **Elapsed Time:** 65 minutes (45 min decision rules review + 20 min quiz)
+- **Areas Studied:** Decision Rules refresher + 10-question scenario quiz
+- **Strong Points:** Perfect score (10/10) on decision rules quiz - all 8 extension mechanisms applied correctly
+- **Weak Points:** None identified for decision rules
+- **Notes:**
+  - Reviewed decision rules: CLAUDE.md, Skills, MCP, Subagents, Hooks, Structured Outputs, Prompt Engineering, Context Engineering
+  - Quiz covered scenario-based questions on tool selection
+  - 100% score indicates strong understanding of when to use each extension
+  - Next: Consider studying Agentic Architecture or Context Management next session
+
 ### 2025-03-29 (45 min)
 - **Time Started:** 15:30
 - **Time Ended:** 16:15

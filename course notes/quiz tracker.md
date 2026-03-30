@@ -16,3 +16,14 @@ This file tracks quiz scores for the Claude Certified Architect exam preparation
 ---
 
 ## Quiz Log
+
+### 2026-03-29 (Decision Rules Quiz)
+- **Time Started:** 21:45
+- **Time Ended:** 21:50
+- **Elapsed Time:** 5 minutes
+- **Number of Questions:** 10
+- **Answers Correct:** 10
+- **Answers Incorrect:** 0
+- **Score Percentage:** 100%
+- **Areas to Focus On:** None - perfect score on decision rules
+- **Notes:** Strong mastery of 8 extension mechanisms. Ready for harder scenarios.
