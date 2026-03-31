@@ -15,6 +15,23 @@ This file tracks quiz scores for the Claude Certified Architect exam preparation
 
 ---
 
+### 2026-03-31 (Tool Design & MCP Integration Quiz)
+- **Time Started:** ~15:00
+- **Time Ended:** ~15:05
+- **Elapsed Time:** 5 minutes
+- **Number of Questions:** 5
+- **Answers Correct:** 4
+- **Answers Incorrect:** 1
+- **Score Percentage:** 80%
+- **Areas to Focus On:** Tool search / tool discovery patterns for large tool sets
+- **Notes:**
+  - Quiz covered Tool Design & MCP Integration: MCP use cases, error handling, tool design principles, tool search, anti-patterns
+  - Missed: Question on tool search for many tools (50+ endpoints) — the correct answer is implementing tool search for runtime discovery
+  - Strong on: MCP error structure, single-responsibility tool design, MCP vs skill distinction
+  - This is a production pattern worth understanding thoroughly — tool search is key for scaling agents with many tools
+
+---
+
 ## Quiz Log
 
 ### 2026-03-29 (Decision Rules Quiz)

@@ -64,6 +64,20 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
   - Key concepts reinforced: specialization, context blowup avoidance, orchestrator integration role
   - Note: `/study` skill command not functioning in current CLI environment - provided materials directly
   - Next: Practice scenario questions on Agentic Architecture or move to Tool Design/MCP domain
+### 2026-03-31 (Quiz review & needs-work item)
+- **Time Started:** ~15:00
+- **Time Ended:** ~15:10
+- **Elapsed Time:** 10 minutes
+- **Areas Studied:** Tool Design & MCP Integration — quiz review, tool search patterns
+- **Strong Points:** MCP error structure, tool design principles, single-responsibility tools, distinguishing MCP vs skills
+- **Weak Points:** Tool search for large tool sets — need to understand when and how to use tool search vs monolithic tools vs MCP
+- **Notes:**
+  - Took 5-question quiz on Tool Design & MCP Integration: scored 4/5
+  - Missed question about 50+ search endpoints — correct approach: implement tool search so Claude discovers relevant tools at runtime
+  - This prevents context bloat and improves tool selection accuracy
+  - Action: Study tool search patterns thoroughly; understand tradeoffs vs tool consolidations
+  - Resource to review: shared/tool-use-concepts.md → Tool Search section
+
 ### 2026-03-30 (3 min flashcard session)
 - **Time:** 23:51
 - **Topic:** Tool Design
