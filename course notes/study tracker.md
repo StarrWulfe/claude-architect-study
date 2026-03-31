@@ -64,3 +64,9 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
   - Key concepts reinforced: specialization, context blowup avoidance, orchestrator integration role
   - Note: `/study` skill command not functioning in current CLI environment - provided materials directly
   - Next: Practice scenario questions on Agentic Architecture or move to Tool Design/MCP domain
+### 2026-03-30 (3 min flashcard session)
+- **Time:** 23:51
+- **Topic:** Tool Design
+- **Cards Reviewed:** 6
+- **Known:** 2 (Why should agents have fewer, more specialized too, How should a tool description be written to avoid )
+- **Needs Work:** 2 (What makes an MCP error response useful to an agen, What anti-pattern should you avoid with MCP?)

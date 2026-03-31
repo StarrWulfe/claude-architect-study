@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Architect Flashcards</title>
+  <style>
+    :root {
+      --bg: #1a1a2e;
+      --card-bg: #16213e;
+      --text: #eee;
+      --accent: #0f3460;
+      --highlight: #e94560;
+      --muted: #94a3b8;
+      --needs-work: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    .header {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .quit-btn {
+      background: transparent;
+      border: 1px solid var(--highlight);
+      color: var(--highlight);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .quit-btn:hover { background: var(--highlight); color: var(--text); }
+    h1 { margin-bottom: 0.5rem; }
+    .subtitle { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.85rem; }
+    .stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+    .stat { color: var(--muted); }
+    .stat span { font-weight: bold; }
+    .stat .known-count { color: #22c55e; }
+    .stat .needs-work-count { color: var(--needs-work); }
+    .card-container {
+      width: 100%;
+      max-width: 600px;
+      height: 340px;
+      perspective: 1000px;
+    }
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+    .card.flipped { transform: rotateX(180deg); }
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .card-front { transform: rotateX(0deg); }
+    .card-back { transform: rotateX(180deg); }
+    .card:hover .card-face { box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+    .card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .card-content {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    .controls {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    button {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--text);
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    button:hover { background: var(--highlight); border-color: var(--highlight); }
+    button.secondary { background: transparent; border: 1px solid var(--muted); }
+    button.secondary:hover { border-color: var(--highlight); background: transparent; }
+    button.flip-btn:hover { background: var(--highlight); border-color: var(--highlight); }
+    button.known-btn { border-color: #22c55e; color: #22c55e; }
+    button.known-btn:hover { background: #22c55e; border-color: #22c55e; color: #1a1a2e; }
+    button.needs-work-btn { background: transparent; border: 1px solid var(--needs-work); color: var(--needs-work); }
+    button.needs-work-btn:hover { background: var(--needs-work); border-color: var(--needs-work); color: #1a1a2e; }
+    .progress-bar {
+      width: 100%;
+      max-width: 600px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--highlight);
+      transition: width 0.3s ease;
+    }
+    .timer {
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-variant-numeric: tabular-nums;
+    }
+    .complete-screen {
+      display: none;
+      text-align: center;
+    }
+    .complete-screen h2 { color: var(--highlight); margin-bottom: 1rem; }
+    .complete-screen .time-spent { font-size: 2rem; margin: 1rem 0; }
+    .complete-screen .summary { color: var(--muted); margin-bottom: 2rem; }
+    .complete-screen .buttons { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <button class="quit-btn" id="quitBtn">❌ Quit</button>
+    <div class="timer" id="timer">00:00</div>
+  </div>
+  
+  <h1>Flashcards</h1>
+  <p class="subtitle">Space: flip • Enter: Got It • Backspace: Needs Work • h/j/k/l or arrows: navigate</p>
+  
+  <div class="stats">
+    <div class="stat">Card: <span id="current">1</span> / <span id="total">0</span></div>
+    <div class="stat">Known: <span class="known-count" id="known">0</span></div>
+    <div class="stat">Needs Work: <span class="needs-work-count" id="needsWork">0</span></div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress" style="width: 0%"></div>
+  </div>
+
+  <div class="card-container">
+    <div class="card" id="card">
+      <div class="card-face card-front">
+        <div class="card-label" id="cardLabel">Question</div>
+        <div class="card-content" id="cardContent"></div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-label" id="cardLabelBack">Answer</div>
+        <div class="card-content" id="cardContentBack"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="secondary" id="prevBtn">⏮️ Prev</button>
+    <button class="flip-btn" id="flipBtn">🔁 Flip</button>
+    <button class="known-btn" id="knownBtn">😌 Got It</button>
+    <button class="needs-work-btn" id="needsWorkBtn">🤔 Needs Work</button>
+    <button class="secondary" id="nextBtn">⏭️ Next</button>
+  </div>
+
+  <div class="complete-screen" id="complete">
+    <h2>Session Complete!</h2>
+    <div class="time-spent" id="finalTime">00:00</div>
+    <p class="summary">Known: <span id="knownFinal">0</span> • Needs Work: <span id="needsWorkFinal">0</span> • Reviewed: <span id="cardsReviewed">0</span></p>
+    <div class="buttons">
+      <button id="logBtn">📝 Log in Study Tracker</button>
+      <button onclick="location.reload()">🔄 Study Again</button>
+    </div>
+  </div>
+
+  <script>
+    const flashcards = [];
+    let currentIndex = 0;
+    let isFlipped = false;
+    let knownCards = new Set();
+    let needsWorkCards = new Set();
+    let startTime = Date.now();
+    let timerInterval;
+    let topic = 'all';
+
+    const card = document.getElementById('card');
+    const cardLabel = document.getElementById('cardLabel');
+    const cardContent = document.getElementById('cardContent');
+    const cardLabelBack = document.getElementById('cardLabelBack');
+    const cardContentBack = document.getElementById('cardContentBack');
+    const currentEl = document.getElementById('current');
+    const totalEl = document.getElementById('total');
+    const knownEl = document.getElementById('known');
+    const needsWorkEl = document.getElementById('needsWork');
+    const progressEl = document.getElementById('progress');
+
+    async function init() {
+      const params = new URLSearchParams(window.location.search);
+      topic = params.get('topic') || 'all';
+      
+      const resp = await fetch('/api/cards?topic=' + topic);
+      const cards = await resp.json();
+      flashcards.length = 0;
+      flashcards.push(...cards);
+      
+      totalEl.textContent = flashcards.length;
+      const title = topic === 'all' ? 'All Topics' : topic.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      document.querySelector('h1').textContent = title;
+      showCard();
+      startTimer();
+      loadProgress();
+    }
+
+    function showCard() {
+      const c = flashcards[currentIndex];
+      cardContent.textContent = c.front;
+      cardContentBack.textContent = c.back;
+      currentEl.textContent = currentIndex + 1;
+      progressEl.style.width = ((currentIndex + 1) / flashcards.length * 100) + '%';
+    }
+
+    function flipCard() {
+      isFlipped = !isFlipped;
+      card.classList.toggle('flipped', isFlipped);
+      cardLabel.textContent = isFlipped ? 'Answer' : 'Question';
+    }
+
+    function nextCard() {
+      if (currentIndex < flashcards.length - 1) {
+        currentIndex++;
+        isFlipped = false;
+        card.classList.remove('flipped');
+        showCard();
+      } else {
+        showComplete();
+      }
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        isFlipped = false;
+        card.classList.remove('flipped');
+        showCard();
+      }
+    }
+
+    function markKnown() {
+      knownCards.add(currentIndex);
+      needsWorkCards.delete(currentIndex);
+      knownEl.textContent = knownCards.size;
+      needsWorkEl.textContent = needsWorkCards.size;
+      saveProgress();
+      nextCard();
+    }
+
+    function markNeedsWork() {
+      needsWorkCards.add(currentIndex);
+      knownCards.delete(currentIndex);
+      knownEl.textContent = knownCards.size;
+      needsWorkEl.textContent = needsWorkCards.size;
+      saveProgress();
+      nextCard();
+    }
+
+    function showComplete() {
+      clearInterval(timerInterval);
+      document.querySelector('.card-container').style.display = 'none';
+      document.querySelector('.controls').style.display = 'none';
+      document.querySelector('.stats').style.display = 'none';
+      document.querySelector('.progress-bar').style.display = 'none';
+      document.querySelector('.subtitle').style.display = 'none';
+      document.querySelector('.header').style.display = 'none';
+      document.getElementById('complete').style.display = 'block';
+      document.getElementById('finalTime').textContent = document.getElementById('timer').textContent;
+      document.getElementById('knownFinal').textContent = knownCards.size;
+      document.getElementById('needsWorkFinal').textContent = needsWorkCards.size;
+      document.getElementById('cardsReviewed').textContent = flashcards.length;
+    }
+
+    async function logToTracker() {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const mins = Math.floor(elapsed / 60);
+      const topicTitle = topic === 'all' ? 'All Topics' : topic.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      
+      const knownList = Array.from(knownCards).map(i => flashcards[i].front.substring(0, 50)).join(', ');
+      const needsWorkList = Array.from(needsWorkCards).map(i => flashcards[i].front.substring(0, 50)).join(', ');
+      
+      const logData = {
+        topic: topicTitle,
+        elapsed: mins,
+        knownCount: knownCards.size,
+        needsWorkCount: needsWorkCards.size,
+        total: flashcards.length,
+        known: knownList || 'None',
+        needsWork: needsWorkList || 'None'
+      };
+
+      const resp = await fetch('/api/log', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(logData)
+      });
+      
+      if (resp.ok) {
+        alert('Logged to study tracker!');
+      } else {
+        alert('Failed to log - ' + await resp.text());
+      }
+    }
+
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const mins = String(Math.floor(elapsed / 60)).padStart(2, '0');
+        const secs = String(elapsed % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = mins + ':' + secs;
+      }, 1000);
+    }
+
+    function saveProgress() {
+      localStorage.setItem('flashcardProgress', JSON.stringify({
+        currentIndex,
+        knownCards: Array.from(knownCards),
+        needsWorkCards: Array.from(needsWorkCards),
+        startTime
+      }));
+    }
+
+    function loadProgress() {
+      const saved = localStorage.getItem('flashcardProgress');
+      if (saved) {
+        const data = JSON.parse(saved);
+        if (data.knownCards) {
+          knownCards = new Set(data.knownCards);
+          knownEl.textContent = knownCards.size;
+        }
+        if (data.needsWorkCards) {
+          needsWorkCards = new Set(data.needsWorkCards);
+          needsWorkEl.textContent = needsWorkCards.size;
+        }
+      }
+    }
+
+    card.addEventListener('click', flipCard);
+    document.getElementById('flipBtn').addEventListener('click', flipCard);
+    document.getElementById('nextBtn').addEventListener('click', nextCard);
+    document.getElementById('prevBtn').addEventListener('click', prevCard);
+    document.getElementById('knownBtn').addEventListener('click', markKnown);
+    document.getElementById('needsWorkBtn').addEventListener('click', markNeedsWork);
+    document.getElementById('quitBtn').addEventListener('click', showComplete);
+    document.getElementById('logBtn').addEventListener('click', logToTracker);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') { e.preventDefault(); flipCard(); }
+      else if (e.code === 'Enter') { e.preventDefault(); markKnown(); }
+      else if (e.code === 'Backspace') { e.preventDefault(); markNeedsWork(); }
+      else if (e.code === 'ArrowRight' || e.code === 'KeyL') { e.preventDefault(); nextCard(); }
+      else if (e.code === 'ArrowLeft' || e.code === 'KeyH') { e.preventDefault(); prevCard(); }
+      else if (e.code === 'ArrowUp' || e.code === 'KeyK') { e.preventDefault(); prevCard(); }
+      else if (e.code === 'ArrowDown' || e.code === 'KeyJ') { e.preventDefault(); nextCard(); }
+    });
+
+    init();
+  </script>
+</body>
+</html>
