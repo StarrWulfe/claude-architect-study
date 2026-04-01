@@ -13,7 +13,20 @@ This file tracks quiz scores for the Claude Certified Architect exam preparation
 - Areas to Focus On: [topics needing improvement based on quiz results]
 - Notes: [additional observations]
 
+### 2026-03-31 (Prompt Engineering Quiz)
+- **Time Started:** ~22:30
+- **Time Ended:** ~22:40
+- **Elapsed Time:** 10 minutes
+- **Number of Questions:** 10
+- **Answers Correct:** 8
+- **Answers Incorrect:** 2
+- **Score Percentage:** 80%
+- **Areas to Focus On:** Examples vs XML tags - examples teach format, XML organizes sections
+- **Notes:** Strong on all principles. Missed Q2 (examples vs XML) and Q9 (more examples needed for edge cases). Covered: clarity, examples, XML tags, thinking, chaining, structured output.
+
 ---
+
+## Quiz Log
 
 ### 2026-03-31 (Tool Design & MCP Integration Quiz)
 - **Time Started:** ~15:00

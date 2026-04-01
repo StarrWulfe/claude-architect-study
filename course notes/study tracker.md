@@ -64,7 +64,18 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
   - Key concepts reinforced: specialization, context blowup avoidance, orchestrator integration role
   - Note: `/study` skill command not functioning in current CLI environment - provided materials directly
   - Next: Practice scenario questions on Agentic Architecture or move to Tool Design/MCP domain
-### 2026-03-31 (Quiz review & needs-work item)
+### 2026-03-31 (Flashcard session + Quiz)
+- **Time Started:** 22:30
+- **Time Ended:** 22:50
+- **Elapsed Time:** 20 minutes
+- **Areas Studied:** Prompt Engineering & Structured Output — flashcards + 10-question quiz
+- **Strong Points:** All 6 principles understood: clarity, examples, XML tags, thinking, chaining, structured output
+- **Weak Points:** Examples vs XML distinction — examples teach format, XML organizes sections
+- **Notes:**
+  - Flashcards: 6 cards, 5 known, 1 needs work (What makes a prompt precise?)
+  - Quiz: 8/10 (80%) - missed Q2 and Q9 about examples
+  - Scenario-based study covered clarity (vague vs specific), examples (input/output pairs), XML (structured sections), thinking (complex reasoning), chaining (sequential steps), structured output (JSON schema)
+  - Next: Review weak points, consider Context Management domain
 - **Time Started:** ~15:00
 - **Time Ended:** ~15:10
 - **Elapsed Time:** 10 minutes
@@ -84,3 +95,10 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
 - **Cards Reviewed:** 6
 - **Known:** 2 (Why should agents have fewer, more specialized too, How should a tool description be written to avoid )
 - **Needs Work:** 2 (What makes an MCP error response useful to an agen, What anti-pattern should you avoid with MCP?)
+
+### 2026-03-31 (3 min flashcard session)
+- **Time:** 22:54
+- **Topic:** Prompt Engineering
+- **Cards Reviewed:** 6
+- **Known:** 5 (When should few-shot examples be added?, What is the anti-pattern of overloading prompts?, Why use structured outputs?, Why skip schema design for outputs that need to be, When does retry-with-feedback help extraction?)
+- **Needs Work:** 1 (What makes a prompt precise instead of vague?)
