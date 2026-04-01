@@ -30,6 +30,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Windows compatibility: statusline configuration now uses PowerShell (`statusline-command.ps1`) instead of bash script
 - Flashcard UI: fixed mirrored text on card flip using preserve-3d and backface-visibility
+- Added Exit button to end screen for closing the session
 
 ## [Initial Setup] - 2026-03-29
 ### Added

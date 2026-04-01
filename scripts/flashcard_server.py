@@ -281,6 +281,7 @@ def generate_html(flashcards, topic_name="Flashcards", topic="all"):
     <div class="buttons">
       <button id="logBtn">📝 Log in Study Tracker</button>
       <button onclick="location.reload()">🔄 Study Again</button>
+      <button class="secondary" id="exitBtn">🚪 Exit</button>
     </div>
   </div>
 
@@ -452,6 +453,7 @@ def generate_html(flashcards, topic_name="Flashcards", topic="all"):
     document.getElementById('needsWorkBtn').addEventListener('click', markNeedsWork);
     document.getElementById('quitBtn').addEventListener('click', showComplete);
     document.getElementById('logBtn').addEventListener('click', logToTracker);
+    document.getElementById('exitBtn').addEventListener('click', () => window.close());
 
     document.addEventListener('keydown', (e) => {{
       if (e.code === 'Space') {{
