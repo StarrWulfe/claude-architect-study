@@ -102,3 +102,16 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
 - **Cards Reviewed:** 6
 - **Known:** 5 (When should few-shot examples be added?, What is the anti-pattern of overloading prompts?, Why use structured outputs?, Why skip schema design for outputs that need to be, When does retry-with-feedback help extraction?)
 - **Needs Work:** 1 (What makes a prompt precise instead of vague?)
+
+### 2026-04-02 (Context Management Quiz)
+- **Time Started:** 12:25
+- **Time Ended:** 12:35
+- **Elapsed Time:** 10 minutes
+- **Areas Studied:** Context Management & Reliability — 10-question scenario quiz
+- **Strong Points:** Perfect score (10/10) - mastered all concepts: context blowup, stale context, subagent isolation, reliability patterns, context refresh triggers
+- **Weak Points:** None
+- **Notes:**
+  - Deep dive covered: context blowup, stale context, what stays/goes, refresh triggers, reliability patterns
+  - Quiz: 10/10 (100%) - all scenarios answered correctly
+  - Key learnings: prioritize essential context, explicit context resets, subagents prevent blowup, reliability = clear error handling
+  - Note to self: randomize correct answers in future quizzes to avoid all-B pattern
