@@ -1,5 +1,7 @@
 # Claude Certified Architect Study Training Skill
 
+> 🚀 **For Teammates**: Copy `course notes/templates/*` to `course notes/` to start fresh!
+
 This repository is designed to support preparation for the **Claude Certified Architect – Foundations** exam. It provides study materials, tracking tools, and a reusable skill for generating quizzes, flashcards, and targeted drills -- all to help Claude Code (or really any AI agent) help keep you on pace. Use AI to teach you AI!
 
 ## 📁 Project Structure
