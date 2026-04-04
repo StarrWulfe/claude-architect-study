@@ -11,6 +11,33 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
 - Weak Points: [areas needing improvement]
 - Notes: [additional observations]
 
+### 2026-04-04 (Claude Code Flashcards + Quiz)
+- **Time Started:** 16:15
+- **Time Ended:** ~16:35
+- **Elapsed Time:** ~20 minutes
+- **Areas Studied:** Claude Code Configuration & Workflows — flashcards + 10-question quiz
+- **Strong Points:** CLAUDE.md per project, instructions/ directory for large configs, .env for secrets, allowedDirectories for security, plan mode, session resumption
+- **Weak Points:** Tool auto-detection vs explicit documentation, config validation (no --validate flag)
+- **Notes:**
+  - Flashcards: 6 cards reviewed
+  - Quiz: 8/10 (80%) - missed Q8 (tool auto-detection) and Q9 (config validation)
+  - Key concepts: CLAUDE.md = always-on project conventions, hooks = deterministic automation outside model loop, skills = reusable workflows
+  - Quiz tracker updated with score and areas to focus on
+
+### 2026-04-04 (All Topics Mixed Quiz)
+- **Time Started:** ~18:15
+- **Time Ended:** ~18:30
+- **Elapsed Time:** ~15 minutes
+- **Areas Studied:** All 5 exam domains — mixed 10-question quiz
+- **Strong Points:** Strong across all domains: subagents, structured outputs, CLAUDE.md, context management patterns
+- **Weak Points:** MCP server integration best practices (use skills, not just docs)
+- **Notes:**
+  - Mixed quiz across all 5 domains: Agentic Architecture, Tool Design, Claude Code, Prompt Engineering, Context Management
+  - Score: 9/10 (90%) — near perfect
+  - Key patterns: fallback subagents, multiple examples + schema, .gitignore + hooks, tool search for large tool sets, session resumption
+  - Quiz tracker updated with score
+  - Ready for exam — all domains covered and performing well
+
 ---
 
 ## Study Session Log

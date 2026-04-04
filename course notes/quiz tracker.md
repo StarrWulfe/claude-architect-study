@@ -39,6 +39,40 @@ This file tracks quiz scores for the Claude Certified Architect exam preparation
 
 ---
 
+### 2026-04-04 (Claude Code Configuration & Workflows Quiz)
+- **Time Started:** 16:15
+- **Time Ended:** ~16:25
+- **Elapsed Time:** ~10 minutes
+- **Number of Questions:** 10
+- **Answers Correct:** 8
+- **Answers Incorrect:** 2
+- **Score Percentage:** 80%
+- **Areas to Focus On:** Tool auto-detection vs explicit documentation, config validation
+- **Notes:**
+  - Quiz covered: Claude Code installation, project configs (CLAUDE.md), CLI tools, file access restrictions, coding conventions, environment variables
+  - Missed Q8 (tool auto-detection - Claude auto-detects, but documenting in CLAUDE.md is best practice for team tools)
+  - Missed Q9 (config validation - no --validate flag, just test it)
+  - Strong on: CLAUDE.md per project, instructions/ directory for large configs, .env for secrets, allowedDirectories for security
+
+---
+
+### 2026-04-04 (All Topics Mixed Quiz)
+- **Time Started:** ~18:15
+- **Time Ended:** ~18:25
+- **Elapsed Time:** ~10 minutes
+- **Number of Questions:** 10
+- **Answers Correct:** 9
+- **Answers Incorrect:** 1
+- **Score Percentage:** 90%
+- **Areas to Focus On:** Tool design patterns for MCP servers (use skills, not just docs)
+- **Notes:**
+  - Mixed quiz across all 5 domains: Agentic Architecture, Tool Design, Claude Code, Prompt Engineering, Context Management
+  - Strong across all domains: subagents, structured outputs, CLAUDE.md usage, context management patterns
+  - Near-perfect score shows readiness for exam
+  - Minor area: MCP server integration best practices (skills vs documentation)
+
+---
+
 ## Quiz Log
 
 ### 2026-03-31 (Tool Design & MCP Integration Quiz)
