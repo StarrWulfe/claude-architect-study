@@ -130,7 +130,14 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
 - **Known:** 5 (When should few-shot examples be added?, What is the anti-pattern of overloading prompts?, Why use structured outputs?, Why skip schema design for outputs that need to be, When does retry-with-feedback help extraction?)
 - **Needs Work:** 1 (What makes a prompt precise instead of vague?)
 
-### 2026-04-02 (Context Management Quiz)
+### 2026-04-09 (Adding new flashcards)
+- **Time:** 15:36
+- **Topic:** Tool Design & Context Management
+- **Cards Added:** 14 new flashcards
+- **Notes:**
+  - Added 8 new cards to tool-design-flashcards.md (few-shot examples, programmatic prerequisites, CLI structured output, least privilege, multi-instance verification, batching)
+  - Added 6 new cards to context-management-flashcards.md (transactional facts, evaluator-optimizer, lost-in-the-middle mitigation, conflicting sources, escalation, multi-concern decomposition)
+  - All new cards address conceptual gaps identified in exam results
 - **Time Started:** 12:25
 - **Time Ended:** 12:35
 - **Elapsed Time:** 10 minutes
@@ -142,3 +149,10 @@ This file tracks study sessions for the Claude Certified Architect exam preparat
   - Quiz: 10/10 (100%) - all scenarios answered correctly
   - Key learnings: prioritize essential context, explicit context resets, subagents prevent blowup, reliability = clear error handling
   - Note to self: randomize correct answers in future quizzes to avoid all-B pattern
+
+### 2026-04-09 (4 min flashcard session)
+- **Time:** 15:41
+- **Topic:** All Topics
+- **Cards Reviewed:** 44
+- **Known:** 5 (What is the key difference between subagents and p, When is prompt chaining better than dynamic decomp, What is the agentic loop?, What problem do hooks solve that prompts cannot?, Why avoid arbitrary loop caps (e.g., 10 iterations)
+- **Needs Work:** 1 (When should you use a hub-and-spoke coordinator pa)

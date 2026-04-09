@@ -35,3 +35,45 @@ What anti-pattern should you avoid with MCP?
 
 ### Back
 Using MCP for something that should be a simple skill or prompt. MCP is for external system integration, not every small task.
+
+### Front
+When should few-shot examples be used for tool selection?
+
+### Back
+Use few-shot examples for ambiguous scenarios where simple descriptions aren't enough. Include 4-6 examples showing reasoning for why one tool was chosen over plausible alternatives.
+
+### Front
+Why are few-shot examples more effective than declarative rules for tool selection?
+
+### Back
+Worked examples demonstrate the actual decision process in context. Declarative rules ("use when"/"do not use when") are less effective for nuanced edge-case reasoning.
+
+### Front
+What is the recommended approach for enforcing tool calling order?
+
+### Back
+Add programmatic prerequisites that block downstream tool calls until required upstream tools return verified data. Don't rely on prompt instructions alone.
+
+### Front
+How should Claude Code CLI enforce structured output for automated pipelines?
+
+### Back
+Use `--output-format json` with `--json-schema` flags to guarantee well-formed JSON at the CLI level, not prompt-based formatting that may be inconsistent.
+
+### Front
+What is the principle of least privilege for tool distribution?
+
+### Back
+Give agents only the tools they need for their specific task. Replace general-purpose tools with specialized ones that constrain capability at the interface level.
+
+### Front
+Why is multi-instance verification more effective than extended thinking for code review?
+
+### Back
+A second independent Claude instance without access to the generator's reasoning eliminates confirmation bias. Extended thinking doesn't help when the model has already rationalized its decisions.
+
+### Front
+What approach helps Claude Code batch multiple tool requests in a single turn?
+
+### Back
+Prompt Claude explicitly to batch related tool requests per turn and return all results together before the next API call. Claude already supports multiple tools per turn.

@@ -8,21 +8,29 @@ This repository is designed to support preparation for the **Claude Certified Ar
 .
 ├── .claude/
 │   └── skills/
-│       └── study.md          # Reusable skill for exam preparation (invoked via `/study`)
-├── certificates/             # Directory for storing exam certificates (empty initially)
-├── claude cert notes/        # Personal notes directory
-├── course notes/             # Additional course materials and tracking logs
-│   ├── Claude Course notes.md      # Notes from Claude courses
-│   ├── claude-101.md               # Introductory Claude course notes
-│   ├── study tracker.md            # Logs study sessions (date/time, elapsed time, areas studied, strong/weak points)
-│   └── quiz tracker.md             # Tracks quiz scores (date/time, question count, correct/incorrect, percentage, focus areas)
-├── references/               # Official reference materials for studying
-│   └── Claude+Certified+Architect+–+Foundations+Certification+Exam+Guide.pdf
-├── claude-study-pack.md      # Main study guide: exam domains, core references, study goals, daily template, decision rules, anti-patterns, flashcards, scenario drills, review checklist, and prompts for quiz/flashcard/drill generation
-├── study-skill.md            # Original skill file (kept for backward compatibility; the active skill is in .claude/skills/study.md)
-├── CLAUDE.md                 # Guidance for Claude Code when working in this repository (commands, structure, conventions, decision rules)
-├── CHANGELOG.md              # Running log of changes made to this project
-└── README.md                 # This file
+│       ├── study.md              # Reusable skill for exam preparation (invoked via `/study`)
+│       └── flashcards/SKILL.md    # Skill for launching flashcard web server
+├── flashcards/                    # Topic-specific flashcard sets
+│   ├── agentic-architecture-flashcards.md
+│   ├── tool-design-flashcards.md
+│   ├── claude-code-flashcards.md
+│   ├── prompt-engineering-flashcards.md
+│   └── context-management-flashcards.md
+├── scripts/
+│   └── flashcard_server.py        # Python web server for flashcards
+├── certificates/                   # Directory for storing exam certificates (empty initially)
+├── claude cert notes/              # Personal notes directory
+├── course notes/                   # Additional course materials and tracking logs
+│   ├── Claude Course notes.md       # Notes from Claude courses
+│   ├── claude-101.md                # Introductory Claude course notes
+│   ├── study tracker.md             # Logs study sessions
+│   └── quiz tracker.md              # Tracks quiz scores
+├── references/                     # Official reference materials
+├── claude-study-pack.md            # Main study guide
+├── study-skill.md                  # Original skill file (backward compatibility)
+├── CLAUDE.md                       # Guidance for Claude Code
+├── CHANGELOG.md                    # Running log of changes
+└── README.md                       # This file
 ```
 
 ## 📖 Key Files Explained
@@ -43,6 +51,13 @@ A reusable skill that enables:
 - **Quiz generation**: `/study quiz` → Create 15 scenario-based multiple-choice questions covering all five domains, with explanations and difficulty tags
 - **Flashcards**: `/study flashcards` → Generate 40 flashcards focused on production decisions, tradeoffs, and anti-patterns
 - **Targeted drills**: `/study drill <weak areas>` → Build a 20-minute drill session with concept checks, scenario questions, anti-pattern questions, and mixed review
+
+### `flashcards/` and `scripts/flashcard_server.py`
+The flashcards are served by a Python HTTP server:
+- Run `python3 scripts/flashcard_server.py` to launch the web interface
+- Access flashcards by topic or "all" at `http://localhost:8000/flashcard.html`
+- Progress is logged to the study tracker via the API
+- Static export available: `python3 scripts/flashcard_server.py --static --topic <topic>`
 
 > 💡 **Note**: The skill was renamed from `study-skill.md` to `study.md` and moved to `.claude/skills/` to enable the shortened `/study` command. The original `study-skill.md` remains in the root for backward compatibility.
 

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased] - 2026-04-09
+### Added
+- 14 new flashcards addressing conceptual gaps from exam results:
+  - 8 new cards to `tool-design-flashcards.md` (few-shot examples, programmatic prerequisites, CLI structured output, least privilege, multi-instance verification, batching)
+  - 6 new cards to `context-management-flashcards.md` (transactional facts, evaluator-optimizer, lost-in-the-middle mitigation, conflicting sources, escalation, multi-concern decomposition)
+- Updated README.md with current file structure and flashcard server usage
+
 ## [Unreleased] - 2026-03-31
 ### Added
 - Initial CLAUDE.md file providing guidance for Claude Code usage in this repository
